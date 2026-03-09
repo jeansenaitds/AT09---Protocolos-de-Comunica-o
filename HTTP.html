@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-100">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP - Protocolos Web & IoT</title>
+    <link rel="icon" href="Imagens/podcast-line-icon.svg" type="image/svg+xml">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body class="bg-light d-flex flex-column h-100">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-danger mb-5 shadow-sm">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold" href="index.html">Início</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link text-white" href="MQTT.html">MQTT</a></li>
+                        <li class="nav-item"><a class="nav-link active fw-bold" href="HTTP.html">HTTP</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="Bluetooth_e_BLE.html">Bluetooth e
+                                BLE</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="Zigbee.html">Zigbee</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="LoRaWAN.html">LoRaWAN</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="NB-IoT_e_LTE-M.html">NB-IoT e
+                                LTE-M</a></li>
+                        <li class="nav-item"><a class="nav-link text-white"
+                                href="Referencias_bibliograficas.html">Referências</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-shrink-0 mb-5">
+        <div class="container">
+            <div class="row border-bottom pb-4 mb-5 align-items-center">
+                <div class="col-md-7">
+                    <span class="badge bg-danger mb-2">PROTOCOLO DE APLICAÇÃO</span>
+                    <h1 class="display-5 fw-bold text-dark">HTTP / HTTPS</h1>
+                    <p class="fs-5 text-secondary mt-2">O padrão global para troca de dados estruturados e integração de
+                        APIs REST.</p>
+                </div>
+                <div class="col-md-5 text-center">
+
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <section class="mb-5">
+                        <h4 class="fw-bold mb-3"><i class="bi bi-arrow-left-right me-2 text-danger"></i>Como funciona?
+                            (Request-Response)</h4>
+                        <p class="text-secondary lh-lg" style="text-align: justify;">
+                            Ao contrário do MQTT, o HTTP é **Stateless** (sem estado) e baseado em solicitações. O
+                            dispositivo IoT (Cliente) abre uma conexão, faz um pedido ao Servidor (Cloud) e recebe uma
+                            resposta. É a base da Web e das APIs RESTful, permitindo que dispositivos enviem dados
+                            complexos (JSON/XML) com facilidade.
+                        </p>
+                    </section>
+
+                    <section class="mb-5">
+                        <h5 class="fw-bold mb-3">Principais Métodos (Verbos) em IoT</h5>
+                        <div class="table-responsive shadow-sm">
+                            <table class="table table-hover border bg-white mb-0">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Método</th>
+                                        <th>Uso na Internet das Coisas</th>
+                                        <th>Exemplo Prático</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="badge bg-primary">GET</span></td>
+                                        <td class="small">Solicitar status ou configurações do servidor.</td>
+                                        <td><code class="text-dark">GET /dispositivo/01/config</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-success">POST</span></td>
+                                        <td class="small">Enviar novos dados de sensores para a nuvem.</td>
+                                        <td><code class="text-dark">POST /api/temperatura {valor: 25}</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-warning text-dark">PUT</span></td>
+                                        <td class="small">Atualizar o estado de um atuador (Ligar/Desligar).</td>
+                                        <td><code class="text-dark">PUT /quarto/luz {status: "on"}</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="mb-5">
+                        <h4 class="fw-bold mb-3"><i class="bi bi-rocket-takeoff me-2 text-danger"></i>Aplicações Reais
+                        </h4>
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <div class="p-3 bg-white border h-100 rounded-3">
+                                    <h6 class="fw-bold">Dashboards Web</h6>
+                                    <p class="small text-muted">Sistemas de monitoramento que exibem gráficos em tempo
+                                        real no navegador.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="p-3 bg-white border h-100 rounded-3">
+                                    <h6 class="fw-bold">Atualizações de Firmware</h6>
+                                    <p class="small text-muted">Download de pacotes de atualização (OTA) via servidores
+                                        HTTPS seguros.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="p-3 bg-white border h-100 rounded-3">
+                                    <h6 class="fw-bold">Gateways de Pagamento</h6>
+                                    <p class="small text-muted">Máquinas de cartão e PDVs que precisam de segurança
+                                        bancária (TLS).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card border-0 bg-dark text-white p-4 shadow mb-4">
+                        <h5 class="fw-bold text-danger mb-4">Análise Técnica</h5>
+                        <ul class="list-unstyled small">
+                            <li class="mb-3">
+                                <span class="text-secondary d-block small">Consumo de Energia:</span>
+                                <strong class="text-danger">ALTO (Devido aos Headers pesados)</strong>
+                            </li>
+                            <li class="mb-3">
+                                <span class="text-secondary d-block small">Segurança:</span>
+                                <strong class="text-success">EXCELENTE (HTTPS/TLS nativo)</strong>
+                            </li>
+                            <li class="mb-3">
+                                <span class="text-secondary d-block small">Alcance:</span>
+                                <strong class="text-primary">GLOBAL (Via Redes IP)</strong>
+                            </li>
+                            <li class="mb-3">
+                                <span class="text-secondary d-block small">Latência:</span>
+                                <strong class="text-warning">MÉDIA (Overhead de conexão)</strong>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="p-3 bg-white border-start border-4 border-warning shadow-sm mb-4">
+                        <h6 class="fw-bold small">Dica Acadêmica:</h6>
+                        <p class="small text-muted mb-0">Em IoT, prefira o HTTP quando o dispositivo tem fonte de
+                            energia constante ou precisa falar com serviços Web tradicionais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer mt-auto py-3 bg-dark text-white text-center">
+        <div class="container">
+            <span class="small opacity-75">Jean Lucas & Rafaela Akiko | SENAI 2026</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

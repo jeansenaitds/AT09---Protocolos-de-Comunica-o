@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-100">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoRaWAN - Protocolos IoT</title>
+    <link rel="icon" href="Imagens/podcast-line-icon.svg" type="image/svg+xml">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body class="bg-light d-flex flex-column h-100">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-danger mb-5 shadow-sm">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold" href="index.html">Início</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link text-white" href="MQTT.html">MQTT</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="HTTP.html">HTTP</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="Bluetooth_e_BLE.html">Bluetooth e
+                                BLE</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="Zigbee.html">Zigbee</a></li>
+                        <li class="nav-item"><a class="nav-link active fw-bold" href="LoRaWAN.html">LoRaWAN</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="NB-IoT_e_LTE-M.html">NB-IoT e
+                                LTE-M</a></li>
+                        <li class="nav-item"><a class="nav-link text-white"
+                                href="Referencias_bibliograficas.html">Referências</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-shrink-0 mb-5">
+        <div class="container">
+            <div class="row align-items-center mb-5">
+                <div class="col-md-7">
+                    <h1 class="display-5 fw-bold text-danger mb-3">LoRaWAN®</h1>
+                    <p class="fs-5 text-secondary" style="text-align: justify;">
+                        O <strong>LoRaWAN</strong> é um protocolo LPWAN (Low Power Wide Area Network) projetado para
+                        conectar sensores em longas distâncias, atravessando barreiras físicas com mínimo consumo de
+                        energia. É a solução ideal para cidades inteligentes e agronegócio.
+                    </p>
+                    <div class="p-3 bg-white border-start border-4 border-danger rounded shadow-sm mb-3">
+                        <small class="text-muted d-block text-uppercase fw-bold">Diferença Técnica:</small>
+                        <strong>LoRa:</strong> A modulação física (baseada em Chirp Spread Spectrum).<br>
+                        <strong>LoRaWAN:</strong> A arquitetura da rede e o protocolo de comunicação.
+                    </div>
+                </div>
+                <div class="col-md-5 text-center">
+
+                </div>
+            </div>
+
+            <div class="row g-4 mb-5 text-center">
+                <div class="col-md-3">
+                    <div class="p-4 bg-white rounded-4 shadow-sm border h-100">
+                        <i class="bi bi-broadcast text-danger fs-1"></i>
+                        <h5 class="fw-bold mt-2">Longo Alcance</h5>
+                        <p class="small text-muted mb-0">Até 15km em campo aberto e 5km em áreas urbanas densas.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-4 bg-white rounded-4 shadow-sm border h-100">
+                        <i class="bi bi-battery-full text-danger fs-1"></i>
+                        <h5 class="fw-bold mt-2">Alta Autonomia</h5>
+                        <p class="small text-muted mb-0">Dispositivos operando por +10 anos com uma bateria comum.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-4 bg-white rounded-4 shadow-sm border h-100">
+                        <i class="bi bi-shield-lock-fill text-danger fs-1"></i>
+                        <h5 class="fw-bold mt-2">Segurança Dupla</h5>
+                        <p class="small text-muted mb-0">Chaves de rede e de aplicação independentes (AES-128).</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-4 bg-white rounded-4 shadow-sm border h-100">
+                        <i class="bi bi-cloud-check text-danger fs-1"></i>
+                        <h5 class="fw-bold mt-2">Capacidade</h5>
+                        <p class="small text-muted mb-0">Um único Gateway pode gerenciar milhares de nós.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 mb-5">
+                <div class="col-lg-7">
+                    <div class="p-4 bg-dark text-white rounded-4 shadow h-100">
+                        <h3 class="fw-bold mb-4 text-danger">Modos de Operação (Classes)</h3>
+                        <div class="accordion accordion-flush" id="accordionClasses">
+                            <div class="accordion-item bg-transparent text-white border-secondary">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button bg-transparent text-white fw-bold" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#classA">
+                                        Classe A (Sempre Ativa em Uplink)
+                                    </button>
+                                </h2>
+                                <div id="classA" class="accordion-collapse collapse show">
+                                    <div class="accordion-body small opacity-75">
+                                        O dispositivo envia dados (uplink) e abre duas janelas curtas de escuta. É a
+                                        classe de menor consumo, obrigatória em todos os dispositivos LoRaWAN.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item bg-transparent text-white border-secondary">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed bg-transparent text-white fw-bold"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#classB">
+                                        Classe B (Janelas Agendadas)
+                                    </button>
+                                </h2>
+                                <div id="classB" class="accordion-collapse collapse">
+                                    <div class="accordion-body small opacity-75">
+                                        Além das janelas da Classe A, abre janelas extras em tempos programados usando
+                                        um <em>Beacon</em> enviado pelo Gateway.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item bg-transparent text-white border-0">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed bg-transparent text-white fw-bold"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#classC">
+                                        Classe C (Escuta Contínua)
+                                    </button>
+                                </h2>
+                                <div id="classC" class="accordion-collapse collapse">
+                                    <div class="accordion-body small opacity-75">
+                                        Mantém o receptor aberto quase o tempo todo. Baixa latência para comandos, mas
+                                        exige muita energia (geralmente ligado à tomada).
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="p-4 bg-white border rounded-4 shadow-sm h-100">
+                        <h4 class="fw-bold mb-3"><i class="bi bi-info-circle me-2 text-danger"></i>Limitações Técnicas
+                        </h4>
+                        <p class="small text-muted">Para garantir o longo alcance e a vida útil da bateria, existem
+                            concessões:</p>
+                        <ul class="small mb-4">
+                            <li><strong>Baixa Taxa de Dados:</strong> De 0.3 kbps a 50 kbps.</li>
+                            <li><strong>Tamanho do Pacote:</strong> Máximo de 242 bytes.</li>
+                            <li><strong>Duty Cycle:</strong> Restrições legais de tempo de ocupação do canal (ex: 1%).
+                            </li>
+                        </ul>
+                        <div class="p-3 bg-light rounded border-start border-3 border-danger">
+                            <h6 class="fw-bold mb-1">Aplicações Reais:</h6>
+                            <p class="very-small text-secondary mb-0">Medição de água/gás, rastreamento de gado,
+                                monitoramento de umidade de solo e iluminação pública.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-secondary border-0 shadow-sm rounded-4 p-4 text-center">
+                <h5 class="fw-bold mb-3">Links de Documentação LoRa Alliance®</h5>
+                <div class="d-flex justify-content-center flex-wrap gap-3">
+                    <a href="#" class="btn btn-outline-danger btn-sm px-4">RP002 Regional Parameters</a>
+                    <a href="#" class="btn btn-outline-danger btn-sm px-4">L2 Spec v1.0.4</a>
+                    <a href="#" class="btn btn-outline-danger btn-sm px-4">LoRaWAN Certification</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer mt-auto py-3 bg-dark text-white text-center">
+        <div class="container small opacity-75">
+            Jean Lucas & Rafaela Akiko | SENAI Sorocaba 2026
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
